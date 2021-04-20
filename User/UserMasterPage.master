@@ -1,0 +1,150 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="UserMasterPage.master.cs" Inherits="Users_UserMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<title>Project</title>
+
+<script type="text/javascript">
+    function DisableBack() {
+        window.history.forward();
+    }
+    DisableBack();
+
+    window.onload = DisableBack;
+
+    window.onpageshow = function (evt) {
+        if (evt.persisted) DisableBack();
+    }
+    window.onunload = function () { void (0); }
+
+    </script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../css/coin-slider.css" />
+<script type="text/javascript" src="../js/cufon-yui.js"></script>
+<script type="text/javascript" src="../js/droid_sans_400-droid_sans_700.font.js"></script>
+<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+<script type="text/javascript" src="../js/coin-slider.min.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+<div class="main" style="background-color: #FF9900">
+  <div class="header" style="background-color: #FFC977">
+    <div class="header_resize">
+      <div class="searchform">
+       
+      </div>
+      <div class="logo">
+      <br />
+                <font size="8">Online Karyasampanna </font>
+      </div>
+      <div class="clr"></div>
+      <div class="menu_nav">
+        <ul>
+          <li class="active"><a href="Default.aspx"><span>Home Page</span></a></li>
+          
+          
+          
+        </ul>
+      </div>
+      <div class="clr"></div>
+      
+    </div>
+  </div>
+  <div class="content" style="background-color: #FF9900">
+    <div class="content_resize">
+        <div class="mainbar">
+            <div class="article">
+          
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+                <span>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                        SelectCommand="SELECT [photo], [name] FROM [Registration] WHERE ([username] = @UserID)">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="UserID" SessionField="username" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+                </span>
+
+            </asp:ContentPlaceHolder>
+         
+        </div>
+       
+      </div>
+      <div class="sidebar">
+        <div class="gadget" 
+              style="background-color: #FFBB77; border: thin groove #000000">
+          <h2 class="star"><span style="color: #000000">Profile</span></h2>
+          <div class="clr"></div>
+          <ul class="sb_menu">
+           
+              <li>
+                  <asp:Image ID="Image2" runat="server" Height="127px" 
+                      ImageUrl="~/web_img/admin.jpg" Width="150px" CssClass="rounduser" />
+              </li>
+              <li>
+                  <asp:Label ID="lbluser" runat="server" Font-Bold="True" Font-Size="Medium" 
+                      ForeColor="Black"></asp:Label>
+                  <br />
+              </li>
+           
+          </ul>
+        </div>
+        <div class="gadget" 
+              style="background-color: #FFBB77; border: thin groove #000000">
+            <ul class="ex_menu">
+                <li>
+                    <asp:Menu ID="Menu1" runat="server" Width="200px">
+                        <StaticMenuItemStyle BackColor="#FFCC00" BorderColor="Black" 
+                            BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="Small" 
+                            ForeColor="#550000" HorizontalPadding="20px" ItemSpacing="3px" 
+                            VerticalPadding="3px" />
+                        <StaticHoverStyle BackColor="Yellow" />
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/User/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/User/ViewPoojaDetails.aspx" 
+                                Text="View Pooja Details" Value="View Pooja Details"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/User/ViewPanditDetails.aspx" 
+                                Text="View Pandit Details" Value="View Pandit Details"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/User/EditProfile.aspx" Text="Edit Profile" 
+                                Value="Edit Profile"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/User/changpwd.aspx" Text="Change pwd" 
+                                Value="Change pwd"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/User/Logout.aspx" Text="Logout" Value="Logout">
+                            </asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+              </li>
+             
+           
+          </ul>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="fbg" style="background-color: #FFBB77; height: 148px;">
+    <div class="fbg_resize">
+      <div class="col c1">
+        <h2>All rig<span>hts reserved</h2>
+        
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer_resize">
+     </div>
+    </div>
+  </div>
+</div>
+
+    </form>
+
+
+</html>
